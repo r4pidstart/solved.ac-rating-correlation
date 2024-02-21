@@ -9,7 +9,7 @@ data = pd.read_csv(data_path)
 data = data[data['rating2'] > 200]
 
 std_dev_x=data['rating2'].std()
-data = data[abs(data.iloc[:,3] - data.iloc[:,3].mean()) < 3 * std_dev_x]
+data = data[abs(data['rating2'] - data['rating2'].mean()) < 3 * std_dev_x]
 print(f'var-{data["rating2"].var()}')
 
 x = data['rating2']
@@ -53,6 +53,5 @@ plt.axhline(2700, 0, 1, color='deeppink', linestyle='solid')
 plt.axhline(3000, 0, 1, color='slategray', linestyle='solid')
 
 plt.title(f'{model.coef_}x+{model.intercept_}')
-plt.legend()
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.show()
